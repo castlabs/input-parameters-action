@@ -1,0 +1,17 @@
+name: Extract input parameters from manual trigger or pull request body
+description: |
+  This action provides a uniform interface for job input parameters whether the
+  job has been triggerered from a `workflow_dispatch` event or from a 
+  `pull_request` event. In the latter case, input parameters must be provided
+  JSON-formatted in the PR text, in a line starting with a configurable prefix.
+  The parameters are exposed as outputs.
+
+inputs:
+  line-prefix:
+    description: A prefix that will mark the PR text line containing inputs.
+    required: false
+    default: '/workflow'
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
